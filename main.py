@@ -26,7 +26,7 @@ def main():
     Player.containers = (updatable, drawable)
     Asteroid.containers = (asteroids, updatable, drawable)
     AsteroidField.containers = updatable
-    Shot.containers = (updatable, drawable)
+    Shot.containers = (updatable, drawable, shots)
 
     # initializing classes
     astroid_field = AsteroidField()
@@ -52,6 +52,12 @@ def main():
             if item.collision(player):
                 print("Game over!")
                 exit()
+
+        for item in asteroids:
+            for bullet in shots:
+                if item.collision(bullet):
+                    item.split()
+                    bullet.kill()
 
         pygame.display.flip()
 
