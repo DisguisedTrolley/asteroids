@@ -26,6 +26,7 @@ def main():
 
         time = clk.tick(60)
         dt = time / 1000
+        player.update(dt)
 
         pygame.display.flip()
 
